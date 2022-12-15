@@ -16,11 +16,14 @@ class Recipe(models.Model):
     directions = models.TextField()
     notes = models.TextField(null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
+
     @property
     def formatted_ingredients(self):
         return markdownify(self.ingredients)
+
     @property
     def formatted_directions(self):
         return markdownify(self.directions)
